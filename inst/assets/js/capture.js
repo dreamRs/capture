@@ -21,8 +21,10 @@
     var toCapture = el.getAttribute("data-selector");
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
+    var options = el.getAttribute("data-options");
+    options = JSON.parse(options);
     domtoimage
-      .toBlob(node)
+      .toBlob(node, options)
       .then(function(blob) {
         window.saveAs(blob, fileName);
       })

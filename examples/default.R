@@ -35,7 +35,8 @@ ui <- fluidPage(
       capture(
         selector = "#result-block",
         filename = "results",
-        icon("camera"), "Take screenshot of results"
+        icon("camera"), "Take screenshot of results",
+        options = list(bgcolor = "#FFF")
       )
     )
   )

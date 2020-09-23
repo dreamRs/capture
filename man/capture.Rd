@@ -4,7 +4,7 @@
 \alias{capture}
 \title{Capture Screenshot}
 \usage{
-capture(selector, filename, ..., format = c("png", "jpeg"))
+capture(selector, filename, ..., format = c("png", "jpeg"), options = list())
 }
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
@@ -14,6 +14,8 @@ capture(selector, filename, ..., format = c("png", "jpeg"))
 \item{...}{Arguments passed to HTML button.}
 
 \item{format}{Format of output between: \code{png} or \code{jpeg}.}
+
+\item{options}{Options psased to \code{domtoimage} method, for example you can use \code{bgcolor} to set background color.}
 }
 \value{
 an HTML tag.
@@ -62,7 +64,8 @@ ui <- fluidPage(
       capture(
         selector = "#result-block",
         filename = "results",
-        icon("camera"), "Take screenshot of results"
+        icon("camera"), "Take screenshot of results",
+        options = list(bgcolor = "#FFF")
       )
     )
   )
