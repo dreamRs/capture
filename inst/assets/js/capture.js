@@ -44,7 +44,7 @@
 
     var node = document.querySelector(toCapture);
     var width = node.clientWidth;
-    var height = node.clientHeight;
+    var height = node.scrollHeight;
     var m = parseInt(margins);
     var ratio = width / height;
     var orientation = ratio > 1 ? "landscape" : "portrait";
@@ -58,6 +58,44 @@
         });
         doc.addImage(dataUrl, "PNG", m, m, width, height);
         doc.save(fileName);
+      })
+      .catch(function(error) {
+        console.error("Capture: oops, something went wrong!", error);
+      });
+  });
+  var count = 1;
+  document.addEventListener("click", function(e) {
+    var el = e.target;
+    el.classList.add("disabled");
+    if (el.classList.contains("btn-capture-lookbook-pdf") === false) {
+      return;
+    }
+
+    var fileName = el.getAttribute("data-filename");
+    var node = document.querySelector("body");
+    var width = node.clientWidth;
+    var height = node.scrollHeight;
+    var m = 15;
+    var ratio = width / height;
+    var orientation = ratio > 1 ? "landscape" : "portrait";
+    function filter(node) {
+      if (typeof node.classList == "undefined") {
+        return(true);
+      }
+      return(node.classList.contains("panel-capture-lookbook") === false);
+    }
+    domtoimage
+      .toPng(node, {filter: filter})
+      .then(function(dataUrl) {
+        var doc = new window.jspdf.jsPDF({
+           orientation: orientation,
+           unit: "pt",
+           format: [width + m * 2, height + m * 2]
+        });
+        doc.addImage(dataUrl, "PNG", m, m, width, height);
+        doc.save(fileName + "-" + count + ".pdf");
+        count += 1;
+        el.classList.remove("disabled");
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
