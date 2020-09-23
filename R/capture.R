@@ -7,11 +7,19 @@
 #' @param filename Name of the file that will be created.
 #' @param ... Arguments passed to HTML button.
 #'
+#' @note It's only possible to take screenshot of elements that are actually visible on screen.
+#'
 #' @return an HTML tag.
 #' @export
 #'
-#' @examples
+#' @importFrom htmltools tagList tags
+#' @importFrom tools file_ext
+#'
+#' @example examples/default.R
 capture <- function(selector, filename, ...) {
+  ext <- tools::file_ext(filename)
+  if (!identical(ext, "png"))
+    filename <- paste0(filename, ".png")
   tagList(
     tags$button(
       class = "btn btn-default btn-capture-screenshot",
