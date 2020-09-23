@@ -1,6 +1,6 @@
 # capture
 
-> Add a button in Shiny application to take a screenshot of a specified element. It uses [dom-to-image](https://github.com/tsayen/dom-to-image) to convert DOM elements to PNG. Doesn't works in IE.
+> Add a button in Shiny application to take a screenshot of a specified element. It uses [dom-to-image](https://github.com/tsayen/dom-to-image) to convert DOM elements to PNG. Doesn't work in IE.
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)

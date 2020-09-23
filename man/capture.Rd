@@ -7,7 +7,7 @@
 capture(selector, filename, ...)
 }
 \arguments{
-\item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific ouput.}
+\item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
 
 \item{filename}{Name of the file that will be created.}
 
@@ -20,7 +20,7 @@ an HTML tag.
 Add a button to take a screenshot of a specified element.
 }
 \note{
-It's only possible to take screenshot of elements that are actually visible on screen.
+It's only possible to take screenshot of elements that are actually visible on screen. It doesn't work in Internet Explorer.
 }
 \examples{
 library(shiny)
