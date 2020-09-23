@@ -4,11 +4,14 @@
 \alias{html-dependencies}
 \alias{html_dependency_domtoimage}
 \alias{html_dependency_filesaver}
+\alias{html_dependency_jspdf}
 \title{HTML dependencies used by capture}
 \usage{
 html_dependency_domtoimage()
 
 html_dependency_filesaver()
+
+html_dependency_jspdf()
 }
 \value{
 an \code{\link[htmltools]{htmlDependency}}.

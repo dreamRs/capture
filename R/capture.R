@@ -1,7 +1,7 @@
 
-#' @title Capture Screenshot
+#' @title Capture Screenshot as Image
 #'
-#' @description Add a button to take a screenshot of a specified element.
+#' @description Add a button to take a screenshot of a specified element and download a PNG file.
 #'
 #' @param selector A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.
 #' @param filename Name of the file (without extension) that will be created.
@@ -31,7 +31,7 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
   }
   tagList(
     tags$button(
-      class = "btn btn-default btn-capture-screenshot",
+      class = "btn btn-default btn-capture btn-capture-screenshot",
       `data-selector` = selector,
       `data-filename` = filename,
       `data-options` = options,
@@ -41,4 +41,36 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
     html_dependency_domtoimage()
   )
 }
+
+
+
+
+#' @title Capture Screenshot as PDF
+#'
+#' @description Add a button to take a screenshot of a specified element and download a PDF file.
+#'
+#' @inheritParams capture
+#' @param margins Margins to add to PDF.
+#'
+#' @return an HTML tag.
+#' @export
+#'
+#' @example examples/pdf.R
+capture_pdf <- function(selector, filename, ..., margins = 15) {
+  ext <- tools::file_ext(filename)
+  if (!identical(ext, "pdf"))
+    filename <- paste0(filename, ".pdf")
+  tagList(
+    tags$button(
+      class = "btn btn-default btn-capture btn-capture-screenshot-pdf",
+      `data-selector` = selector,
+      `data-filename` = filename,
+      `data-margins` = margins,
+      ...
+    ),
+    html_dependency_jspdf(),
+    html_dependency_domtoimage()
+  )
+}
+
 

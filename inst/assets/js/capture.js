@@ -32,5 +32,36 @@
         console.error("Capture: oops, something went wrong!", error);
       });
   });
+  document.addEventListener("click", function(e) {
+    var el = e.target;
+    if (el.classList.contains("btn-capture-screenshot-pdf") === false) {
+      return;
+    }
+
+    var toCapture = el.getAttribute("data-selector");
+    var fileName = el.getAttribute("data-filename");
+    var margins = el.getAttribute("data-margins");
+
+    var node = document.querySelector(toCapture);
+    var width = node.clientWidth;
+    var height = node.clientHeight;
+    var m = parseInt(margins);
+    var ratio = width / height;
+    var orientation = ratio > 1 ? "landscape" : "portrait";
+    domtoimage
+      .toPng(node)
+      .then(function(dataUrl) {
+        var doc = new window.jspdf.jsPDF({
+           orientation: orientation,
+           unit: "pt",
+           format: [width + m * 2, height + m * 2]
+        });
+        doc.addImage(dataUrl, "PNG", m, m, width, height);
+        doc.save(fileName);
+      })
+      .catch(function(error) {
+        console.error("Capture: oops, something went wrong!", error);
+      });
+  });
 })();
 

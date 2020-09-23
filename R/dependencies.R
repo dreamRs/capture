@@ -33,3 +33,15 @@ html_dependency_filesaver <- function() {
     script = "FileSaver/FileSaver.min.js"
   )
 }
+
+#' @rdname html-dependencies
+#' @export
+html_dependency_jspdf <- function() {
+  htmlDependency(
+    name = "jsPDF",
+    version = "2.1.1",
+    src = list(file = "assets"),
+    package = "capture",
+    script = "jsPDF/jspdf.umd.min.js"
+  )
+}
