@@ -3,9 +3,12 @@
 \name{html-dependencies}
 \alias{html-dependencies}
 \alias{html_dependency_domtoimage}
+\alias{html_dependency_filesaver}
 \title{HTML dependencies used by capture}
 \usage{
 html_dependency_domtoimage()
+
+html_dependency_filesaver()
 }
 \value{
 an \code{\link[htmltools]{htmlDependency}}.

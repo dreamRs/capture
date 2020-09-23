@@ -5,8 +5,9 @@ ui <- fluidPage(
   tags$h2("Capture example"),
   capture(
     selector = "body",
-    filename = "all-page.png",
-    icon("camera"), "Take screenshot of all page"
+    filename = "all-page",
+    icon("camera"), "Take screenshot of all page",
+    format = "jpeg"
   ),
   tags$br(),
   fluidRow(
@@ -33,7 +34,7 @@ ui <- fluidPage(
       ),
       capture(
         selector = "#result-block",
-        filename = "results.png",
+        filename = "results",
         icon("camera"), "Take screenshot of results"
       )
     )

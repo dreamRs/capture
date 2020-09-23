@@ -4,14 +4,16 @@
 \alias{capture}
 \title{Capture Screenshot}
 \usage{
-capture(selector, filename, ...)
+capture(selector, filename, ..., format = c("png", "jpeg"))
 }
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
 
-\item{filename}{Name of the file that will be created.}
+\item{filename}{Name of the file (without extension) that will be created.}
 
 \item{...}{Arguments passed to HTML button.}
+
+\item{format}{Format of output between: \code{png} or \code{jpeg}.}
 }
 \value{
 an HTML tag.
@@ -30,8 +32,9 @@ ui <- fluidPage(
   tags$h2("Capture example"),
   capture(
     selector = "body",
-    filename = "all-page.png",
-    icon("camera"), "Take screenshot of all page"
+    filename = "all-page",
+    icon("camera"), "Take screenshot of all page",
+    format = "jpeg"
   ),
   tags$br(),
   fluidRow(
@@ -58,7 +61,7 @@ ui <- fluidPage(
       ),
       capture(
         selector = "#result-block",
-        filename = "results.png",
+        filename = "results",
         icon("camera"), "Take screenshot of results"
       )
     )

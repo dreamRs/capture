@@ -21,3 +21,15 @@ html_dependency_domtoimage <- function() {
     )
   )
 }
+
+#' @rdname html-dependencies
+#' @export
+html_dependency_filesaver <- function() {
+  htmlDependency(
+    name = "FileSaver",
+    version = "2.0.4",
+    src = list(file = "assets"),
+    package = "capture",
+    script = "FileSaver/FileSaver.min.js"
+  )
+}

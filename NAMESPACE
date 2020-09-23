@@ -2,6 +2,7 @@
 
 export(capture)
 export(html_dependency_domtoimage)
+export(html_dependency_filesaver)
 importFrom(htmltools,htmlDependency)
 importFrom(htmltools,tagList)
 importFrom(htmltools,tags)

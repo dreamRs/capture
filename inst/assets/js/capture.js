@@ -13,19 +13,6 @@
 /*global domtoimage */
 
 (function() {
-  function download(filename, dataImage) {
-    var element = document.createElement("a");
-    element.setAttribute("href", dataImage);
-    element.setAttribute("download", filename);
-
-    element.style.display = "none";
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
-  }
-
   document.addEventListener("click", function(e) {
     var el = e.target;
     if (el.classList.contains("btn-capture-screenshot") === false) {
@@ -35,9 +22,9 @@
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
     domtoimage
-      .toPng(node)
-      .then(function(dataUrl) {
-        download(fileName, dataUrl);
+      .toBlob(node)
+      .then(function(blob) {
+        window.saveAs(blob, fileName);
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
