@@ -36,3 +36,9 @@ fluidPage(
 )
 ```
 
+
+## Related packages
+
+* [snapper](https://github.com/yonicd/snapper) : snap images of html objects in Shiny apps using `canvas2html` JavaScript
+library.
+
