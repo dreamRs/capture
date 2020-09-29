@@ -34,6 +34,7 @@
   });
   document.addEventListener("click", function(e) {
     var el = e.target;
+    el.classList.add("disabled");
     if (el.classList.contains("btn-capture-screenshot-pdf") === false) {
       return;
     }
@@ -58,6 +59,7 @@
         });
         doc.addImage(dataUrl, "PNG", m, m, width, height);
         doc.save(fileName);
+        el.classList.remove("disabled");
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
