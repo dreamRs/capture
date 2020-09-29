@@ -18,6 +18,13 @@
     if (el.classList.contains("btn-capture-screenshot") === false) {
       return;
     }
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
+      alert("Screenshot functionnality is not available with Internet Explorer.");
+      return;
+    }
+    el.classList.add("disabled");
     var toCapture = el.getAttribute("data-selector");
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
@@ -27,6 +34,7 @@
       .toBlob(node, options)
       .then(function(blob) {
         window.saveAs(blob, fileName);
+        el.classList.remove("disabled");
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
@@ -34,11 +42,16 @@
   });
   document.addEventListener("click", function(e) {
     var el = e.target;
-    el.classList.add("disabled");
     if (el.classList.contains("btn-capture-screenshot-pdf") === false) {
       return;
     }
-
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
+      alert("Screenshot functionnality is not available with Internet Explorer.");
+      return;
+    }
+    el.classList.add("disabled");
     var toCapture = el.getAttribute("data-selector");
     var fileName = el.getAttribute("data-filename");
     var margins = el.getAttribute("data-margins");
@@ -68,11 +81,16 @@
   var count = 1;
   document.addEventListener("click", function(e) {
     var el = e.target;
-    el.classList.add("disabled");
     if (el.classList.contains("btn-capture-lookbook-pdf") === false) {
       return;
     }
-
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
+      alert("Screenshot functionnality is not available with Internet Explorer.");
+      return;
+    }
+    el.classList.add("disabled");
     var fileName = el.getAttribute("data-filename");
     var node = document.querySelector("body");
     var width = node.clientWidth;
