@@ -9,7 +9,7 @@ Authors@R:
       person(given = "Fanny",
              family = "Meyer",
              role = "aut"))
-Description: Add a button in web page to take a screenshot of a specified element.
+Description: Add a button in web page ('Shiny' or 'RMarkdown') to take a screenshot of a specified element.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -20,3 +20,9 @@ Imports:
     jsonlite,
     shiny,
     tools
+Suggests: 
+    knitr,
+    rmarkdown,
+    leaflet,
+    dygraphs
+VignetteBuilder: knitr

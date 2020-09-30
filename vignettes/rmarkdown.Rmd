@@ -1,0 +1,54 @@
+---
+title: "R Markdown usage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rmarkdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(capture)
+```
+
+{capure} allow to take screenshots in R Markdown documents in HTML format.
+
+For example, save the map as PNG:
+
+```{r}
+capture("#my-map", "map", "Save map as PNG")
+```
+
+::: {#my-map}
+```{r map}
+library(leaflet)
+
+leaflet(width = "100%") %>%
+  addTiles() %>%
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+:::
+
+
+Or with a {dygraph} chart:
+
+```{r}
+capture("#my-chart", "chart", "Save chart as PNG")
+```
+
+```{r}
+library(dygraphs)
+lungDeaths <- cbind(mdeaths, fdeaths)
+dygraph(lungDeaths, width = "100%", elementId = "my-chart")
+```
+
+
+
+
