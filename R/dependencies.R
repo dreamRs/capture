@@ -9,16 +9,25 @@
 #'
 #' @name html-dependencies
 #'
+html_dependency_capture <- function() {
+  htmlDependency(
+    name = "capture",
+    version = "0.1.0",
+    src = list(file = "assets"),
+    package = "capture",
+    script = "js/capture.js"
+  )
+}
+
+#' @rdname html-dependencies
+#' @export
 html_dependency_domtoimage <- function() {
   htmlDependency(
     name = "dom-to-image",
     version = "2.6.0",
     src = list(file = "assets"),
     package = "capture",
-    script = c(
-      "dom-to-image/dom-to-image.min.js",
-      "js/capture.js"
-    )
+    script = "dom-to-image/dom-to-image.min.js"
   )
 }
 

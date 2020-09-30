@@ -38,7 +38,8 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
       ...
     ),
     html_dependency_filesaver(),
-    html_dependency_domtoimage()
+    html_dependency_domtoimage(),
+    html_dependency_capture()
   )
 }
 
@@ -69,7 +70,8 @@ capture_pdf <- function(selector, filename, ..., margins = 15) {
       ...
     ),
     html_dependency_jspdf(),
-    html_dependency_domtoimage()
+    html_dependency_domtoimage(),
+    html_dependency_capture()
   )
 }
 

@@ -31,7 +31,8 @@ lookbook <- function(filename) {
       )
     ),
     html_dependency_jspdf(),
-    html_dependency_domtoimage()
+    html_dependency_domtoimage(),
+    html_dependency_capture()
   )
 }
 

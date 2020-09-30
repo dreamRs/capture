@@ -10,18 +10,49 @@
   browser:true,
   devel: true
 */
-/*global domtoimage */
+/*global domtoimage, MicroModal */
 
 (function() {
+  function elOrParentHasClass(element, classname) {
+    if (
+      typeof element.classList !== "undefined" &&
+      element.classList.contains(classname)
+    )
+      return true;
+    return (
+      element.parentNode && elOrParentHasClass(element.parentNode, classname)
+    );
+  }
+  function validateEl(element, classname) {
+    if (
+      typeof element.classList !== "undefined" &&
+      element.classList.contains(classname)
+    )
+      return element;
+    return (
+      validateEl(element.parentNode, classname)
+    );
+  }
+  if (typeof MicroModal !== "undefined") {
+    MicroModal.init({
+      openTrigger: "data-micromodal-open",
+      closeTrigger: "data-micromodal-close"
+    });
+  }
+
+  // IMAGE
   document.addEventListener("click", function(e) {
     var el = e.target;
-    if (el.classList.contains("btn-capture-screenshot") === false) {
+    if (!elOrParentHasClass(el, "btn-capture-screenshot")) {
       return;
     }
+    el = validateEl(el, "btn-capture-screenshot");
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
     if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
-      alert("Screenshot functionnality is not available with Internet Explorer.");
+      alert(
+        "Screenshot functionnality is not available with Internet Explorer."
+      );
       return;
     }
     el.classList.add("disabled");
@@ -40,15 +71,20 @@
         console.error("Capture: oops, something went wrong!", error);
       });
   });
+
+  // PDF
   document.addEventListener("click", function(e) {
     var el = e.target;
-    if (el.classList.contains("btn-capture-screenshot-pdf") === false) {
+    if (!elOrParentHasClass(el, "btn-capture-screenshot-pdf")) {
       return;
     }
+    el = validateEl(el, "btn-capture-screenshot-pdf");
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
     if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
-      alert("Screenshot functionnality is not available with Internet Explorer.");
+      alert(
+        "Screenshot functionnality is not available with Internet Explorer."
+      );
       return;
     }
     el.classList.add("disabled");
@@ -66,9 +102,9 @@
       .toPng(node)
       .then(function(dataUrl) {
         var doc = new window.jspdf.jsPDF({
-           orientation: orientation,
-           unit: "pt",
-           format: [width + m * 2, height + m * 2]
+          orientation: orientation,
+          unit: "pt",
+          format: [width + m * 2, height + m * 2]
         });
         doc.addImage(dataUrl, "PNG", m, m, width, height);
         doc.save(fileName);
@@ -78,16 +114,21 @@
         console.error("Capture: oops, something went wrong!", error);
       });
   });
+
+  // LOOKBOOK
   var count = 1;
   document.addEventListener("click", function(e) {
     var el = e.target;
-    if (el.classList.contains("btn-capture-lookbook-pdf") === false) {
+    if (!elOrParentHasClass(el, "btn-capture-lookbook-pdf")) {
       return;
     }
+    el = validateEl(el, "btn-capture-lookbook-pdf");
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
     if (msie > 0 || !!ua.match(/Trident.*rv\:11\./)) {
-      alert("Screenshot functionnality is not available with Internet Explorer.");
+      alert(
+        "Screenshot functionnality is not available with Internet Explorer."
+      );
       return;
     }
     el.classList.add("disabled");
@@ -100,17 +141,17 @@
     var orientation = ratio > 1 ? "landscape" : "portrait";
     function filter(node) {
       if (typeof node.classList == "undefined") {
-        return(true);
+        return true;
       }
-      return(node.classList.contains("panel-capture-lookbook") === false);
+      return node.classList.contains("panel-capture-lookbook") === false;
     }
     domtoimage
-      .toPng(node, {filter: filter})
+      .toPng(node, { filter: filter })
       .then(function(dataUrl) {
         var doc = new window.jspdf.jsPDF({
-           orientation: orientation,
-           unit: "pt",
-           format: [width + m * 2, height + m * 2]
+          orientation: orientation,
+          unit: "pt",
+          format: [width + m * 2, height + m * 2]
         });
         doc.addImage(dataUrl, "PNG", m, m, width, height);
         doc.save(fileName + "-" + count + ".pdf");
