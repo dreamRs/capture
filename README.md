@@ -49,6 +49,7 @@ You can create PDF document of the page with `capture_pdf()`.
 
 ## Related packages
 
+* [shinyscreenshot](https://github.com/daattali/shinyscreenshot) (on CRAN): Capture screenshots of entire pages or parts of pages in Shiny apps
 * [snapper](https://github.com/yonicd/snapper) : snap images of html objects in Shiny apps using `canvas2html` JavaScript
 library.
 
