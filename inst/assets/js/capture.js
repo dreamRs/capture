@@ -10,7 +10,7 @@
   browser:true,
   devel: true
 */
-/*global domtoimage, MicroModal */
+/*global domtoimage */
 
 (function() {
   function elOrParentHasClass(element, classname) {
@@ -32,12 +32,6 @@
     return (
       validateEl(element.parentNode, classname)
     );
-  }
-  if (typeof MicroModal !== "undefined") {
-    MicroModal.init({
-      openTrigger: "data-micromodal-open",
-      closeTrigger: "data-micromodal-close"
-    });
   }
 
   // IMAGE
@@ -88,9 +82,20 @@
       return;
     }
     el.classList.add("disabled");
+
     var toCapture = el.getAttribute("data-selector");
     var fileName = el.getAttribute("data-filename");
     var margins = el.getAttribute("data-margins");
+    var loading = el.getAttribute("data-loading");
+    if (loading === "true") {
+      var configLoading = el.querySelector(
+        "script[data-for='capture-loading-config']"
+      );
+      configLoading = JSON.parse(configLoading.innerHTML);
+      //console.log(configLoading.type);
+      Notiflix.Loading.Init(configLoading.options);
+      Notiflix.Loading[configLoading.type](configLoading.text);
+    }
 
     var node = document.querySelector(toCapture);
     var width = node.clientWidth;
@@ -109,6 +114,7 @@
         doc.addImage(dataUrl, "PNG", m, m, width, height);
         doc.save(fileName);
         el.classList.remove("disabled");
+        Notiflix.Loading.Remove();
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);

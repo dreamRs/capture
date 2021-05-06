@@ -6,7 +6,8 @@ ui <- fluidPage(
   capture_pdf(
     selector = "body",
     filename = "all-page",
-    icon("camera"), "Take screenshot of all page"
+    icon("camera"), "Take screenshot of all page",
+    loading = loading()
   ),
   tags$br(),
   fluidRow(

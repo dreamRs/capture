@@ -52,12 +52,18 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
 #'
 #' @inheritParams capture
 #' @param margins Margins to add to PDF.
+#' @param loading Add a loading indicator if taking screenshot take time, see \code{\link{loading}} for usage.
 #'
 #' @return an HTML tag.
 #' @export
 #'
+#' @importFrom tools file_ext
+#' @importFrom htmltools tagList tags
+#' @importFrom jsonlite toJSON
+#' @importFrom shinybusy html_dependency_notiflix
+#'
 #' @example examples/pdf.R
-capture_pdf <- function(selector, filename, ..., margins = 15) {
+capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL) {
   ext <- tools::file_ext(filename)
   if (!identical(ext, "pdf"))
     filename <- paste0(filename, ".pdf")
@@ -67,11 +73,20 @@ capture_pdf <- function(selector, filename, ..., margins = 15) {
       `data-selector` = selector,
       `data-filename` = filename,
       `data-margins` = margins,
-      ...
+      `data-loading` = tolower(!is.null(loading)),
+      ...,
+      if (!is.null(loading)) {
+        tags$script(
+          type = "application/json",
+          `data-for` = "capture-loading-config",
+          toJSON(loading, auto_unbox = TRUE)
+        )
+      }
     ),
     html_dependency_jspdf(),
     html_dependency_domtoimage(),
-    html_dependency_capture()
+    html_dependency_capture(),
+    html_dependency_notiflix()
   )
 }
 

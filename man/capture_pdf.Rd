@@ -4,7 +4,7 @@
 \alias{capture_pdf}
 \title{Capture Screenshot as PDF}
 \usage{
-capture_pdf(selector, filename, ..., margins = 15)
+capture_pdf(selector, filename, ..., margins = 15, loading = NULL)
 }
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
@@ -14,6 +14,8 @@ capture_pdf(selector, filename, ..., margins = 15)
 \item{...}{Arguments passed to HTML button.}
 
 \item{margins}{Margins to add to PDF.}
+
+\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link{loading}} for usage.}
 }
 \value{
 an HTML tag.
@@ -30,7 +32,8 @@ ui <- fluidPage(
   capture_pdf(
     selector = "body",
     filename = "all-page",
-    icon("camera"), "Take screenshot of all page"
+    icon("camera"), "Take screenshot of all page",
+    loading = loading()
   ),
   tags$br(),
   fluidRow(
