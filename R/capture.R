@@ -3,11 +3,13 @@
 #'
 #' @description Add a button to take a screenshot of a specified element and download a PNG file.
 #'
-#' @param selector A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.
+#' @param selector A CSS selector, for example `body` to target the whole page or `#<ID>` to target a specific output.
 #' @param filename Name of the file (without extension) that will be created.
 #' @param ... Arguments passed to HTML button.
-#' @param format Format of output between: \code{png} or \code{jpeg}.
-#' @param options Options passed to \code{domtoimage} method, for example you can use \code{bgcolor} to set background color.
+#' @param format Format of output between: `"png"` or `"jpeg"`.
+#' @param scale Scale factor applied to image's dimension.
+#' @param options Options (as a list) passed to [domtoimage](https://github.com/tsayen/dom-to-image)
+#'  method, for example you can use `bgcolor` to set background color.
 #'
 #' @note It's only possible to take screenshot of elements that are actually visible on screen. It doesn't work in Internet Explorer.
 #'
@@ -19,7 +21,7 @@
 #' @importFrom jsonlite toJSON
 #'
 #' @example examples/default.R
-capture <- function(selector, filename, ..., format = c("png", "jpeg"), options = list()) {
+capture <- function(selector, filename, ..., format = c("png", "jpeg"), scale = NULL, options = list()) {
   format <- match.arg(format)
   ext <- tools::file_ext(filename)
   if (identical(ext, ""))
@@ -35,6 +37,7 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
       `data-selector` = selector,
       `data-filename` = filename,
       `data-options` = options,
+      `data-scale` = if (!is.null(scale)) scale,
       ...
     ),
     html_dependency_filesaver(),
@@ -52,7 +55,7 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), options 
 #'
 #' @inheritParams capture
 #' @param margins Margins to add to PDF.
-#' @param loading Add a loading indicator if taking screenshot take time, see \code{\link{loading}} for usage.
+#' @param loading Add a loading indicator if taking screenshot take time, see [loading()] for usage.
 #'
 #' @return an HTML tag.
 #' @export

@@ -53,8 +53,21 @@
     var toCapture = el.getAttribute("data-selector");
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
+    var scale = parseInt(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
     options = JSON.parse(options);
+    if (!isNaN(scale)) {
+      options.height = options.height ? options.height * scale : node.offsetHeight * scale;
+      options.width = options.width ? options.width * scale : node.offsetWidth * scale;
+      if (!options.hasOwnProperty("style")) {
+        options.style = {};
+      }
+      options.style.transform = "scale(" + scale + ")";
+      options.style.transformOrigin = "top left";
+      options.style.width = node.offsetWidth + "px";
+      options.style.height = node.offsetHeight + "px";
+    }
+
     domtoimage
       .toBlob(node, options)
       .then(function(blob) {
