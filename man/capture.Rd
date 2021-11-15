@@ -4,18 +4,28 @@
 \alias{capture}
 \title{Capture Screenshot as Image}
 \usage{
-capture(selector, filename, ..., format = c("png", "jpeg"), options = list())
+capture(
+  selector,
+  filename,
+  ...,
+  format = c("png", "jpeg"),
+  scale = NULL,
+  options = list()
+)
 }
 \arguments{
-\item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
+\item{selector}{A CSS selector, for example \code{body} to target the whole page or \verb{#<ID>} to target a specific output.}
 
 \item{filename}{Name of the file (without extension) that will be created.}
 
 \item{...}{Arguments passed to HTML button.}
 
-\item{format}{Format of output between: \code{png} or \code{jpeg}.}
+\item{format}{Format of output between: \code{"png"} or \code{"jpeg"}.}
 
-\item{options}{Options passed to \code{domtoimage} method, for example you can use \code{bgcolor} to set background color.}
+\item{scale}{Scale factor applied to image's dimension.}
+
+\item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
+method, for example you can use \code{bgcolor} to set background color.}
 }
 \value{
 an HTML tag.
@@ -65,6 +75,13 @@ ui <- fluidPage(
         selector = "#result-block",
         filename = "results",
         icon("camera"), "Take screenshot of results",
+        options = list(bgcolor = "#FFF")
+      ),
+      capture(
+        selector = "#result-block",
+        filename = "results",
+        icon("camera"), "Take screenshot of results (bigger scale)",
+        scale = 3,
         options = list(bgcolor = "#FFF")
       )
     )

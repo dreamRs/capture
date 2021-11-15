@@ -18,7 +18,7 @@ loading(
 
 \item{type}{Type of loading animation.}
 
-\item{color}{Color.}
+\item{color}{Color for text and loading indicator.}
 
 \item{background}{Background color.}
 
@@ -27,7 +27,7 @@ loading(
 \item{...}{Other arguments.}
 }
 \value{
-a \code{list} that can be used in \code{capture_pdf}.
+a \code{list} that can be used in \code{\link[=capture_pdf]{capture_pdf()}}.
 }
 \description{
 Loading indicator to be displayed when generating screenshot

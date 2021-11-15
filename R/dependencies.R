@@ -1,7 +1,7 @@
 
 #' HTML dependencies used by capture
 #'
-#' @return an \code{\link[htmltools]{htmlDependency}}.
+#' @return an [htmltools::htmlDependency()].
 #' @export
 #'
 #' @importFrom utils packageVersion

@@ -17,7 +17,7 @@ html_dependency_filesaver()
 html_dependency_jspdf()
 }
 \value{
-an \code{\link[htmltools]{htmlDependency}}.
+an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
 }
 \description{
 HTML dependencies used by capture

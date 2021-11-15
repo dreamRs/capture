@@ -7,7 +7,7 @@
 capture_pdf(selector, filename, ..., margins = 15, loading = NULL)
 }
 \arguments{
-\item{selector}{A CSS selector, for example \code{body} to target the whole page or \code{#<ID>} to target a specific output.}
+\item{selector}{A CSS selector, for example \code{body} to target the whole page or \verb{#<ID>} to target a specific output.}
 
 \item{filename}{Name of the file (without extension) that will be created.}
 
@@ -15,7 +15,7 @@ capture_pdf(selector, filename, ..., margins = 15, loading = NULL)
 
 \item{margins}{Margins to add to PDF.}
 
-\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link{loading}} for usage.}
+\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
 }
 \value{
 an HTML tag.
@@ -92,4 +92,5 @@ server <- function(input, output, session) {
 
 if (interactive())
   shinyApp(ui, server)
+
 }
