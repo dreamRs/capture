@@ -35,8 +35,8 @@
   }
 
   // IMAGE
-  document.addEventListener("click", function(e) {
-    var el = e.target;
+  function capureImage(event) {
+    var el = event.target;
     if (!elOrParentHasClass(el, "btn-capture-screenshot")) {
       return;
     }
@@ -67,7 +67,6 @@
       options.style.width = node.offsetWidth + "px";
       options.style.height = node.offsetHeight + "px";
     }
-
     domtoimage
       .toBlob(node, options)
       .then(function(blob) {
@@ -77,11 +76,19 @@
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
       });
-  });
+  }
+  function capureImage_(event) {
+    try {
+      capureImage(event);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  document.addEventListener("click", capureImage_);
 
   // PDF
-  document.addEventListener("click", function(e) {
-    var el = e.target;
+  function capturePDF(event) {
+    var el = event.target;
     if (!elOrParentHasClass(el, "btn-capture-screenshot-pdf")) {
       return;
     }
@@ -148,7 +155,15 @@
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
       });
-  });
+  }
+  function capturePDF_(event) {
+    try {
+      capturePDF(event);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  document.addEventListener("click", capturePDF_);
 
   // LOOKBOOK
   var count = 1;
