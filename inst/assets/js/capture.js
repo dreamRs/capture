@@ -109,15 +109,31 @@
       Notiflix.Loading.Init(configLoading.options);
       Notiflix.Loading[configLoading.type](configLoading.text);
     }
-
+    
     var node = document.querySelector(toCapture);
     var width = node.clientWidth;
     var height = node.scrollHeight;
     var m = parseInt(margins);
     var ratio = width / height;
     var orientation = ratio > 1 ? "landscape" : "portrait";
+    
+    var scale = parseInt(el.getAttribute("data-scale"));
+    var options = el.getAttribute("data-options");
+    options = JSON.parse(options);
+    if (!isNaN(scale)) {
+      options.height = options.height ? options.height * scale : node.offsetHeight * scale;
+      options.width = options.width ? options.width * scale : node.offsetWidth * scale;
+      if (!options.hasOwnProperty("style")) {
+        options.style = {};
+      }
+      options.style.transform = "scale(" + scale + ")";
+      options.style.transformOrigin = "top left";
+      options.style.width = node.offsetWidth + "px";
+      options.style.height = node.offsetHeight + "px";
+    }
+    
     domtoimage
-      .toPng(node)
+      .toPng(node, options)
       .then(function(dataUrl) {
         var doc = new window.jspdf.jsPDF({
           orientation: orientation,

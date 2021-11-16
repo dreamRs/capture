@@ -4,7 +4,15 @@
 \alias{capture_pdf}
 \title{Capture Screenshot as PDF}
 \usage{
-capture_pdf(selector, filename, ..., margins = 15, loading = NULL)
+capture_pdf(
+  selector,
+  filename,
+  ...,
+  margins = 15,
+  loading = NULL,
+  scale = NULL,
+  options = list()
+)
 }
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \verb{#<ID>} to target a specific output.}
@@ -16,6 +24,11 @@ capture_pdf(selector, filename, ..., margins = 15, loading = NULL)
 \item{margins}{Margins to add to PDF.}
 
 \item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
+
+\item{scale}{Scale factor applied to image's dimension.}
+
+\item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
+method, for example you can use \code{bgcolor} to set background color.}
 }
 \value{
 an HTML tag.
@@ -62,6 +75,12 @@ ui <- fluidPage(
         selector = "#result-block",
         filename = "results",
         icon("camera"), "Take screenshot of results"
+      ),
+      capture_pdf(
+        selector = "#result-block",
+        filename = "results",
+        scale = 3,
+        icon("camera"), "Take screenshot of results (bigger scale)"
       )
     )
   )

@@ -36,6 +36,12 @@ ui <- fluidPage(
         selector = "#result-block",
         filename = "results",
         icon("camera"), "Take screenshot of results"
+      ),
+      capture_pdf(
+        selector = "#result-block",
+        filename = "results",
+        scale = 3,
+        icon("camera"), "Take screenshot of results (bigger scale)"
       )
     )
   )

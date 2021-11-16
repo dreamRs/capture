@@ -66,10 +66,15 @@ capture <- function(selector, filename, ..., format = c("png", "jpeg"), scale = 
 #' @importFrom shinybusy html_dependency_notiflix
 #'
 #' @example examples/pdf.R
-capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL) {
+capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL, scale = NULL, options = list()) {
   ext <- tools::file_ext(filename)
   if (!identical(ext, "pdf"))
     filename <- paste0(filename, ".pdf")
+  if (length(options) < 1)  {
+    options <- "{}"
+  } else {
+    options <- toJSON(x = options, auto_unbox = TRUE)
+  }
   tagList(
     tags$button(
       class = "btn btn-default btn-capture btn-capture-screenshot-pdf",
@@ -77,6 +82,8 @@ capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL) {
       `data-filename` = filename,
       `data-margins` = margins,
       `data-loading` = tolower(!is.null(loading)),
+      `data-options` = options,
+      `data-scale` = if (!is.null(scale)) scale,
       ...,
       if (!is.null(loading)) {
         tags$script(
