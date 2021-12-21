@@ -44,12 +44,35 @@ ui <- fluidPage(
         icon("camera"), "Take screenshot of results (bigger scale)",
         scale = 3,
         options = list(bgcolor = "#FFF")
-      )
+      ),
+      capture(
+        selector = "#result-block",
+        filename = NULL, # no download client side
+        icon("camera"), "Take screenshot of results (retrieve server side)",
+        inputId = "screenshot",
+        options = list(bgcolor = "#FFF")
+      ),
+      uiOutput("out")
     )
   )
 )
 
 server <- function(input, output, session) {
+  
+  output$out <- renderUI({
+    # # Here we display image back in interface, 
+    # # but you can also write image on disk
+    # write_png <- function(x, filename) {
+    #   x <- sub(".*,", "", x)
+    #   x <- base64enc::base64decode(x)
+    #   png::writePNG(png::readPNG(x), filename)
+    # }
+    # write_png(input$screenshot, "myimage.png")
+    
+    tags$img(src = input$screenshot)
+  })
+  
+  
   distrib_r <- reactive({
     switch(
       input$loi,

@@ -53,6 +53,7 @@
     var toCapture = el.getAttribute("data-selector");
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
+    var inputId = el.getAttribute("data-inputId");
     var scale = parseInt(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
     options = JSON.parse(options);
@@ -70,7 +71,17 @@
     domtoimage
       .toBlob(node, options)
       .then(function(blob) {
-        window.saveAs(blob, fileName);
+        if (fileName !== null) {
+          window.saveAs(blob, fileName);
+        }
+        if (inputId !== null) {
+          var reader = new FileReader();
+          reader.readAsDataURL(blob); 
+          reader.onloadend = function() {
+            var base64data = reader.result;                
+            Shiny.setInputValue(inputId, base64data);
+          }
+        }
         el.classList.remove("disabled");
       })
       .catch(function(error) {

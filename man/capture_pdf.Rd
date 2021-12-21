@@ -17,7 +17,7 @@ capture_pdf(
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \verb{#<ID>} to target a specific output.}
 
-\item{filename}{Name of the file (without extension) that will be created.}
+\item{filename}{Name of the file (without extension) that will be created. If \code{NULL} no file is downloaded client side.}
 
 \item{...}{Arguments passed to HTML button.}
 
@@ -25,7 +25,7 @@ capture_pdf(
 
 \item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
 
-\item{scale}{Scale factor applied to image's dimension.}
+\item{scale}{Scale factor applied to image's dimension. Can be used to get a higher resolution image.}
 
 \item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
 method, for example you can use \code{bgcolor} to set background color.}

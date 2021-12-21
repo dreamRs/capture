@@ -10,19 +10,22 @@ capture(
   ...,
   format = c("png", "jpeg"),
   scale = NULL,
-  options = list()
+  inputId = NULL,
+  options = NULL
 )
 }
 \arguments{
 \item{selector}{A CSS selector, for example \code{body} to target the whole page or \verb{#<ID>} to target a specific output.}
 
-\item{filename}{Name of the file (without extension) that will be created.}
+\item{filename}{Name of the file (without extension) that will be created. If \code{NULL} no file is downloaded client side.}
 
 \item{...}{Arguments passed to HTML button.}
 
 \item{format}{Format of output between: \code{"png"} or \code{"jpeg"}.}
 
-\item{scale}{Scale factor applied to image's dimension.}
+\item{scale}{Scale factor applied to image's dimension. Can be used to get a higher resolution image.}
+
+\item{inputId}{An \code{inputId} to retrieve image as base64 in an \code{input} slot server-side.}
 
 \item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
 method, for example you can use \code{bgcolor} to set background color.}
@@ -83,12 +86,35 @@ ui <- fluidPage(
         icon("camera"), "Take screenshot of results (bigger scale)",
         scale = 3,
         options = list(bgcolor = "#FFF")
-      )
+      ),
+      capture(
+        selector = "#result-block",
+        filename = NULL, # no download client side
+        icon("camera"), "Take screenshot of results (retrieve server side)",
+        inputId = "screenshot",
+        options = list(bgcolor = "#FFF")
+      ),
+      uiOutput("out")
     )
   )
 )
 
 server <- function(input, output, session) {
+  
+  output$out <- renderUI({
+    # # Here we display image back in interface, 
+    # # but you can also write image on disk
+    # write_png <- function(x, filename) {
+    #   x <- sub(".*,", "", x)
+    #   x <- base64enc::base64decode(x)
+    #   png::writePNG(png::readPNG(x), filename)
+    # }
+    # write_png(input$screenshot, "myimage.png")
+    
+    tags$img(src = input$screenshot)
+  })
+  
+  
   distrib_r <- reactive({
     switch(
       input$loi,

@@ -4,10 +4,11 @@
 #' @description Add a button to take a screenshot of a specified element and download a PNG file.
 #'
 #' @param selector A CSS selector, for example `body` to target the whole page or `#<ID>` to target a specific output.
-#' @param filename Name of the file (without extension) that will be created.
+#' @param filename Name of the file (without extension) that will be created. If `NULL` no file is downloaded client side.
 #' @param ... Arguments passed to HTML button.
 #' @param format Format of output between: `"png"` or `"jpeg"`.
-#' @param scale Scale factor applied to image's dimension.
+#' @param scale Scale factor applied to image's dimension. Can be used to get a higher resolution image.
+#' @param inputId An `inputId` to retrieve image as base64 in an `input` slot server-side.
 #' @param options Options (as a list) passed to [domtoimage](https://github.com/tsayen/dom-to-image)
 #'  method, for example you can use `bgcolor` to set background color.
 #'
@@ -21,23 +22,25 @@
 #' @importFrom jsonlite toJSON
 #'
 #' @example examples/default.R
-capture <- function(selector, filename, ..., format = c("png", "jpeg"), scale = NULL, options = list()) {
+capture <- function(selector,
+                    filename,
+                    ..., 
+                    format = c("png", "jpeg"),
+                    scale = NULL, 
+                    inputId = NULL,
+                    options = NULL) {
   format <- match.arg(format)
   ext <- tools::file_ext(filename)
   if (identical(ext, ""))
     filename <- paste0(filename, ".", format)
-  if (length(options) < 1)  {
-    options <- "{}"
-  } else {
-    options <- toJSON(x = options, auto_unbox = TRUE)
-  }
   tagList(
     tags$button(
       class = "btn btn-default btn-capture btn-capture-screenshot",
       `data-selector` = selector,
       `data-filename` = filename,
-      `data-options` = options,
-      `data-scale` = if (!is.null(scale)) scale,
+      `data-options` = toJSON(x = options, auto_unbox = TRUE),
+      `data-scale` = scale,
+      `data-inputId` = inputId,
       ...
     ),
     html_dependency_filesaver(),
