@@ -1,3 +1,10 @@
+# capture 0.1.2
+
+* Use [{packer}](https://github.com/JohnCoene/packer) to manage JavaScript assets.
+* Switch [dom-to-image](https://github.com/tsayen/dom-to-image) for [html-to-image](https://github.com/bubkoo/html-to-image).
+* `capture()` / `capture_pdf()`: added `button_class` argument, the base CSS class for the button.
+
+
 # capture 0.1.1
 
 * `capture()` / `capture_pdf()`: added `scale` argument, to be applied to image dimensions.
