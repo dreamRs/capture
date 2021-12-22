@@ -1,5 +1,7 @@
 
 #' HTML dependencies used by capture
+#' 
+#' @param type Type of dependency to use.
 #'
 #' @return an [htmltools::htmlDependency()].
 #' @export
@@ -17,41 +19,5 @@ html_dependency_capture <- function(type = c("image", "pdf", "lookbook")) {
     src = list(file = "packer"),
     package = "capture",
     script = sprintf("capture-%s.js", type)
-  )
-}
-
-#' @rdname html-dependencies
-#' @export
-html_dependency_domtoimage <- function() {
-  htmlDependency(
-    name = "dom-to-image",
-    version = "2.6.0",
-    src = list(file = "assets"),
-    package = "capture",
-    script = "dom-to-image/dom-to-image.min.js"
-  )
-}
-
-#' @rdname html-dependencies
-#' @export
-html_dependency_filesaver <- function() {
-  htmlDependency(
-    name = "FileSaver",
-    version = "2.0.4",
-    src = list(file = "assets"),
-    package = "capture",
-    script = "FileSaver/FileSaver.min.js"
-  )
-}
-
-#' @rdname html-dependencies
-#' @export
-html_dependency_jspdf <- function() {
-  htmlDependency(
-    name = "jsPDF",
-    version = "2.1.1",
-    src = list(file = "assets"),
-    package = "capture",
-    script = "jsPDF/jspdf.umd.min.js"
   )
 }

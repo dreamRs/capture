@@ -3,18 +3,12 @@
 \name{html-dependencies}
 \alias{html-dependencies}
 \alias{html_dependency_capture}
-\alias{html_dependency_domtoimage}
-\alias{html_dependency_filesaver}
-\alias{html_dependency_jspdf}
 \title{HTML dependencies used by capture}
 \usage{
-html_dependency_capture()
-
-html_dependency_domtoimage()
-
-html_dependency_filesaver()
-
-html_dependency_jspdf()
+html_dependency_capture(type = c("image", "pdf", "lookbook"))
+}
+\arguments{
+\item{type}{Type of dependency to use.}
 }
 \value{
 an \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}.
