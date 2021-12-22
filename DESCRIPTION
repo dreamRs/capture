@@ -25,3 +25,4 @@ Suggests:
     leaflet,
     dygraphs
 VignetteBuilder: knitr
+URL: https://dreamrs.github.io/capture

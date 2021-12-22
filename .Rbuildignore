@@ -10,3 +10,6 @@ examples/
 ^webpack\.dev\.js$
 ^webpack\.prod\.js$
 ^webpack\.common\.js$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
