@@ -64,7 +64,6 @@ capture <- function(selector,
 #' @importFrom tools file_ext
 #' @importFrom htmltools tagList tags
 #' @importFrom jsonlite toJSON
-#' @importFrom shinybusy html_dependency_notiflix
 #'
 #' @example examples/pdf.R
 capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL, scale = NULL, options = list()) {
@@ -94,10 +93,7 @@ capture_pdf <- function(selector, filename, ..., margins = 15, loading = NULL, s
         )
       }
     ),
-    html_dependency_jspdf(),
-    html_dependency_domtoimage(),
-    html_dependency_capture(),
-    html_dependency_notiflix()
+    html_dependency_capture("pdf")
   )
 }
 

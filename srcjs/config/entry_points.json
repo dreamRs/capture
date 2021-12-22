@@ -1,3 +1,4 @@
 {
-  "capture-image": "./srcjs/exts/capture-image.js"
+  "capture-image": "./srcjs/exts/capture-image.js",
+  "capture-pdf": "./srcjs/exts/capture-pdf.js"
 }

@@ -9,13 +9,14 @@
 #'
 #' @name html-dependencies
 #'
-html_dependency_capture <- function() {
+html_dependency_capture <- function(type = c("image", "pdf")) {
+  type <- match.arg(type)
   htmlDependency(
     name = "capture",
     version = "0.1.0",
     src = list(file = "packer"),
     package = "capture",
-    script = "capture-image.js"
+    script = sprintf("capture-%s.js", type)
   )
 }
 

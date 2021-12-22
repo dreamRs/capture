@@ -18,7 +18,6 @@ loading <- function(text = "Generating PDF, please wait...",
                     size = "80px",
                     ...) {
   type <- match.arg(type)
-  type <- tools::toTitleCase(type)
   list(
     text = text,
     type = type,
