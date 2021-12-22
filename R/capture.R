@@ -43,8 +43,6 @@ capture <- function(selector,
       `data-inputId` = inputId,
       ...
     ),
-    html_dependency_filesaver(),
-    html_dependency_domtoimage(),
     html_dependency_capture()
   )
 }

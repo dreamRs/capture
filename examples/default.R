@@ -34,23 +34,23 @@ ui <- fluidPage(
       ),
       capture(
         selector = "#result-block",
-        filename = "results",
+        filename = "results-screenshot",
         icon("camera"), "Take screenshot of results",
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       capture(
         selector = "#result-block",
-        filename = "results",
+        filename = "results-screenshot",
         icon("camera"), "Take screenshot of results (bigger scale)",
         scale = 3,
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       capture(
         selector = "#result-block",
         filename = NULL, # no download client side
         icon("camera"), "Take screenshot of results (retrieve server side)",
         inputId = "screenshot",
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       uiOutput("out")
     )
