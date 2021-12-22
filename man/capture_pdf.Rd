@@ -11,7 +11,8 @@ capture_pdf(
   margins = 15,
   loading = NULL,
   scale = NULL,
-  options = list()
+  options = NULL,
+  button_class = "btn btn-default"
 )
 }
 \arguments{
@@ -27,11 +28,13 @@ capture_pdf(
 
 \item{scale}{Scale factor applied to image's dimension. Can be used to get a higher resolution image.}
 
-\item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
-method, for example you can use \code{bgcolor} to set background color.}
+\item{options}{Options (as a list) passed to \href{https://github.com/bubkoo/html-to-image#options}{html-to-image}
+method, for example you can use \code{backgroundColor} to set background color.}
+
+\item{button_class}{Class to use for the HTML tag \verb{<button>}}
 }
 \value{
-an HTML tag.
+an HTML tag that can be used in UI or rmarkdown HTML document.
 }
 \description{
 Add a button to take a screenshot of a specified element and download a PDF file.

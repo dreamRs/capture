@@ -11,7 +11,8 @@ capture(
   format = c("png", "jpeg"),
   scale = NULL,
   inputId = NULL,
-  options = NULL
+  options = NULL,
+  button_class = "btn btn-default"
 )
 }
 \arguments{
@@ -27,11 +28,13 @@ capture(
 
 \item{inputId}{An \code{inputId} to retrieve image as base64 in an \code{input} slot server-side.}
 
-\item{options}{Options (as a list) passed to \href{https://github.com/tsayen/dom-to-image}{domtoimage}
-method, for example you can use \code{bgcolor} to set background color.}
+\item{options}{Options (as a list) passed to \href{https://github.com/bubkoo/html-to-image#options}{html-to-image}
+method, for example you can use \code{backgroundColor} to set background color.}
+
+\item{button_class}{Class to use for the HTML tag \verb{<button>}}
 }
 \value{
-an HTML tag.
+an HTML tag that can be used in UI or rmarkdown HTML document.
 }
 \description{
 Add a button to take a screenshot of a specified element and download a PNG file.
@@ -76,23 +79,23 @@ ui <- fluidPage(
       ),
       capture(
         selector = "#result-block",
-        filename = "results",
+        filename = "results-screenshot",
         icon("camera"), "Take screenshot of results",
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       capture(
         selector = "#result-block",
-        filename = "results",
+        filename = "results-screenshot",
         icon("camera"), "Take screenshot of results (bigger scale)",
         scale = 3,
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       capture(
         selector = "#result-block",
         filename = NULL, # no download client side
         icon("camera"), "Take screenshot of results (retrieve server side)",
         inputId = "screenshot",
-        options = list(bgcolor = "#FFF")
+        options = list(backgroundColor = "#FFF")
       ),
       uiOutput("out")
     )

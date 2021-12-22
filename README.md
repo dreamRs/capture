@@ -1,6 +1,6 @@
 # capture
 
-> Add a button in Shiny application or R Markdown document to take a screenshot (PNG or PDF) of a specified element. It uses [dom-to-image](https://github.com/tsayen/dom-to-image) to convert DOM elements to PNG and [jsPDF](https://github.com/parallax/jsPDF) to generate PDF. Doesn't work in IE.
+> Add a button in Shiny application or R Markdown document to take a screenshot (PNG or PDF) of a specified element. It uses [html-to-image](https://github.com/bubkoo/html-to-image) to convert DOM elements to PNG and [jsPDF](https://github.com/parallax/jsPDF) to generate PDF. Doesn't work in IE.
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)

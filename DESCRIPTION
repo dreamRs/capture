@@ -1,6 +1,6 @@
 Package: capture
 Title: Capture Screenshot in Web Page
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     c(person(given = "Victor",
              family = "Perrier",
@@ -8,19 +8,7 @@ Authors@R:
              email = "victor.perrier@dreamrs.fr"),
       person(given = "Fanny",
              family = "Meyer",
-             role = "aut"),
-      person(given = "Anatolii",
-             family = "Saienko",
-             comment = "Author of dom-to-image JavaScript library",
-             role = "cph"),
-      person(given = "Eli",
-             family = "Grey",
-             comment = "Author of FileSaver JavaScript library",
-             role = "cph"),
-      person(given = "James",
-             family = "Hall",
-             comment = "Author of jsPDF JavaScript library",
-             role = "cph"))
+             role = "aut"))
 Description: Add a button in web page ('Shiny' or 'RMarkdown') to take a screenshot of a specified element.
 License: GPL-3
 Encoding: UTF-8
@@ -30,7 +18,6 @@ Imports:
     htmltools,
     jsonlite,
     shiny,
-    shinybusy,
     tools
 Suggests: 
     knitr,

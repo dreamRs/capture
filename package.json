@@ -1,0 +1,37 @@
+{
+  "name": "capture",
+  "version": "1.0.0",
+  "description": "> Add a button in Shiny application or R Markdown document to take a screenshot (PNG or PDF) of a specified element. It uses [dom-to-image](https://github.com/tsayen/dom-to-image) to convert DOM elements to PNG and [jsPDF](https://github.com/parallax/jsPDF) to generate PDF. Doesn't work in IE.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "man": "man"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "none": "webpack --config webpack.dev.js --mode=none",
+    "development": "webpack --config webpack.dev.js",
+    "production": "webpack --config webpack.prod.js",
+    "watch": "webpack --config webpack.dev.js -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreamRs/capture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dreamRs/capture/issues"
+  },
+  "homepage": "https://github.com/dreamRs/capture#readme",
+  "devDependencies": {
+    "file-saver": "^2.0.5",
+    "html-to-image": "^1.9.0",
+    "jspdf": "^2.5.0",
+    "notiflix": "^3.2.2",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
