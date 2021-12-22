@@ -9,7 +9,7 @@
 #'
 #' @name html-dependencies
 #'
-html_dependency_capture <- function(type = c("image", "pdf")) {
+html_dependency_capture <- function(type = c("image", "pdf", "lookbook")) {
   type <- match.arg(type)
   htmlDependency(
     name = "capture",

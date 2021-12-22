@@ -30,9 +30,7 @@ lookbook <- function(filename) {
         shiny::icon("camera"), "Take screenshot"
       )
     ),
-    html_dependency_jspdf(),
-    html_dependency_domtoimage(),
-    html_dependency_capture()
+    html_dependency_capture("lookbook")
   )
 }
 

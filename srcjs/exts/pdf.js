@@ -1,7 +1,7 @@
 import * as htmlToImage from "html-to-image";
 import { jsPDF } from "jspdf";
 import { Loading } from "notiflix/build/notiflix-loading-aio";
-import * as utils from "./utils";
+import * as utils from "../modules/utils";
 
 (function() {
   // PDF

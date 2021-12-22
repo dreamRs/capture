@@ -1,6 +1,6 @@
 import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
-import * as utils from "./utils";
+import * as utils from "../modules/utils";
 
 (function() {
   // IMAGE
