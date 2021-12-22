@@ -15,7 +15,7 @@ html_dependency_capture <- function() {
     version = "0.1.0",
     src = list(file = "packer"),
     package = "capture",
-    script = "capture-img.js"
+    script = "capture-image.js"
   )
 }
 

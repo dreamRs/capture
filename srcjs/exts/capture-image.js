@@ -1,4 +1,3 @@
-import "shiny";
 import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
 import * as utils from "./utils";
