@@ -114,6 +114,18 @@
 <a href="https://github.com/yonicd/snapper" class="external-link">snapper</a> : snap images of html objects in Shiny apps using <code>canvas2html</code> JavaScript library.</li>
 </ul>
 </div>
+<div class="section level2">
+<h2 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
+</h2>
+<p>This package use <a href="https://github.com/JohnCoene/packer" class="external-link">{packer}</a> to manage JavaScript assets, see packer’s <a href="https://packer.john-coene.com/#/" class="external-link">documentation</a> for more.</p>
+<p>Install nodes modules with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu">npm_install</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Modify <code>srcjs/exts/image.js</code> or <code>srcjs/exts/pdf.js</code>, then run:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">packer</span><span class="fu">::</span><span class="fu">bundle</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Re-install R package and try <code><a href="reference/capture.html">capture()</a></code> or <code><a href="reference/capture_pdf.html">capture_pdf()</a></code> functions.</p>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
