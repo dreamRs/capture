@@ -53,3 +53,24 @@ You can create PDF document of the page with `capture_pdf()`.
 * [snapper](https://github.com/yonicd/snapper) : snap images of html objects in Shiny apps using `canvas2html` JavaScript
 library.
 
+
+
+## Development
+
+This package use [{packer}](https://github.com/JohnCoene/packer) to manage JavaScript assets, see packer's [documentation](https://packer.john-coene.com/#/) for more.
+
+Install nodes modules with:
+
+```r
+packer::npm_install()
+```
+
+Modify `srcjs/exts/image.js` or `srcjs/exts/pdf.js`, then run:
+
+```r
+packer::bundle()
+```
+
+Re-install R package and try `capture()` or `capture_pdf()` functions.
+
+

@@ -7,6 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -20,22 +21,46 @@ library(capture)
 
 {capure} allow to take screenshots in R Markdown documents in HTML format.
 
+
+
+## All page
+
+Capture a screenshot of the entire page with:
+
+```{r}
+capture(
+  selector = "body", 
+  filename = "my-document", 
+  "Take screenshot", 
+  button_class = "btn btn-primary btn-block"
+)
+```
+
+If you want a PDF as output, you can use `capture_pdf()`.
+
+
+
+## leaflet map
+
 For example, save the map as PNG:
 
 ```{r}
-capture("#my-map", "map", "Save map as PNG")
+capture("#map-and-code", "map", "Save map and code as PNG")
+capture("#only-map", "map", "Save only map as PNG")
 ```
 
-::: {#my-map}
+::: {#map-and-code}
 ```{r map}
 library(leaflet)
 
-leaflet(width = "100%") %>%
+leaflet(width = "100%", elementId = "only-map") %>%
   addTiles() %>%
   addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
 ```
 :::
 
+
+## dygraph chart
 
 Or with a {dygraph} chart:
 
