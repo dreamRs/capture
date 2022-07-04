@@ -11,7 +11,7 @@
 #'
 #' @name html-dependencies
 #'
-html_dependency_capture <- function(type = c("image", "pdf", "lookbook")) {
+html_dependency_capture <- function(type = c("image", "pdf", "lookbook", "page")) {
   type <- match.arg(type)
   htmlDependency(
     name = "capture",

@@ -5,7 +5,7 @@
 \alias{html_dependency_capture}
 \title{HTML dependencies used by capture}
 \usage{
-html_dependency_capture(type = c("image", "pdf", "lookbook"))
+html_dependency_capture(type = c("image", "pdf", "lookbook", "page"))
 }
 \arguments{
 \item{type}{Type of dependency to use.}

@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/dreamRs/capture#readme",
   "devDependencies": {
+    "@xata.io/screenshot": "^1.0.0",
     "file-saver": "^2.0.5",
     "html-to-image": "^1.9.0",
     "jspdf": "^2.5.0",

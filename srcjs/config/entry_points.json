@@ -1,5 +1,6 @@
 {
   "capture-image": "./srcjs/exts/image.js",
   "capture-pdf": "./srcjs/exts/pdf.js",
-  "capture-lookbook": "./srcjs/exts/lookbook.js"
+  "capture-lookbook": "./srcjs/exts/lookbook.js",
+  "capture-page": "./srcjs/exts/page.js"
 }
