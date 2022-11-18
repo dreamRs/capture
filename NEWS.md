@@ -1,3 +1,8 @@
+# capture 0.1.3
+
+* Updated html-to-image to 1.10.8.
+
+
 # capture 0.1.2
 
 * Use [{packer}](https://github.com/JohnCoene/packer) to manage JavaScript assets.

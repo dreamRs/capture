@@ -27,7 +27,7 @@
   "homepage": "https://github.com/dreamRs/capture#readme",
   "devDependencies": {
     "file-saver": "^2.0.5",
-    "html-to-image": "^1.9.0",
+    "html-to-image": "^1.10.8",
     "jspdf": "^2.5.0",
     "notiflix": "^3.2.2",
     "webpack": "^5.65.0",
