@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![R build status](https://github.com/dreamRs/capture/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/capture/actions)
+[![R-CMD-check](https://github.com/dreamRs/capture/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dreamRs/capture/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 
