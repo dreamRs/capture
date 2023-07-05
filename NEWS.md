@@ -1,3 +1,9 @@
+# capture 0.1.4
+
+* Updated html-to-image to 1.11.11.
+* Updated jspdf to 2.5.1.
+
+
 # capture 0.1.3
 
 * Updated html-to-image to 1.10.8.
