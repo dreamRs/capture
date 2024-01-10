@@ -25,4 +25,5 @@ Suggests:
     leaflet,
     dygraphs
 VignetteBuilder: knitr
-URL: https://dreamrs.github.io/capture
+URL: https://dreamrs.github.io/capture, https://github.com/dreamRs/capture
+BugReports: https://github.com/dreamRs/capture/issues
