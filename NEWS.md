@@ -1,6 +1,7 @@
 # capture 0.1.5
 
-* Allow floating numbers in `scale =` argument.
+* Allow floating numbers in `scale =` argument [#13](https://github.com/dreamRs/capture/issues/13).
+* Allow to pass JavaScript function in `options$filter` argument [#12](https://github.com/dreamRs/capture/issues/12).
 
 
 # capture 0.1.4

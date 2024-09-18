@@ -26,6 +26,9 @@ import * as utils from "../modules/utils";
     var scale = parseFloat(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
     options = JSON.parse(options);
+    if (options.hasOwnProperty("filter")) {
+      options.filter = eval("(" + options.filter + ")");
+    }
     if (!isNaN(scale)) {
       options.height = options.height
         ? options.height * scale
