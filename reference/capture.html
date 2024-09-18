@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">capture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,8 @@
 <span>  scale <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  inputId <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  options <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  loading <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  statusInputId <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  button_class <span class="op">=</span> <span class="st">"btn btn-default"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -87,6 +89,14 @@
 method, for example you can use <code>backgroundColor</code> to set background color.</p></dd>
 
 
+<dt id="arg-loading">loading<a class="anchor" aria-label="anchor" href="#arg-loading"></a></dt>
+<dd><p>Add a loading indicator if taking screenshot take time, see <code><a href="loading.html">loading()</a></code> for usage.</p></dd>
+
+
+<dt id="arg-statusinputid">statusInputId<a class="anchor" aria-label="anchor" href="#arg-statusinputid"></a></dt>
+<dd><p>Retrieve status information in an <code>input</code> value server-side.</p></dd>
+
+
 <dt id="arg-button-class">button_class<a class="anchor" aria-label="anchor" href="#arg-button-class"></a></dt>
 <dd><p>Class to use for the HTML tag <code>&lt;button&gt;</code></p></dd>
 
@@ -111,7 +121,7 @@ method, for example you can use <code>backgroundColor</code> to set background c
 <span class="r-in"><span>    selector <span class="op">=</span> <span class="st">"body"</span>,</span></span>
 <span class="r-in"><span>    filename <span class="op">=</span> <span class="st">"all-page"</span>,</span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/icon.html" class="external-link">icon</a></span><span class="op">(</span><span class="st">"camera"</span><span class="op">)</span>, <span class="st">"Take screenshot of all page"</span>,</span></span>
-<span class="r-in"><span>    format <span class="op">=</span> <span class="st">"jpeg"</span></span></span>
+<span class="r-in"><span>    format <span class="op">=</span> <span class="st">"png"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="va">tags</span><span class="op">$</span><span class="fu">br</span><span class="op">(</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span></span>
@@ -119,7 +129,6 @@ method, for example you can use <code>backgroundColor</code> to set background c
 <span class="r-in"><span>      width <span class="op">=</span> <span class="fl">4</span>,</span></span>
 <span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/wellPanel.html" class="external-link">wellPanel</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>        <span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"Parameters :"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>          inputId <span class="op">=</span> <span class="st">"loi"</span>,</span></span>
 <span class="r-in"><span>          label <span class="op">=</span> <span class="st">"Law:"</span>,</span></span>
@@ -212,7 +221,7 @@ method, for example you can use <code>backgroundColor</code> to set background c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

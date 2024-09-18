@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">capture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,9 +47,10 @@
 <span>  <span class="va">filename</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  margins <span class="op">=</span> <span class="fl">15</span>,</span>
-<span>  loading <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  scale <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  options <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  loading <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  statusInputId <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  button_class <span class="op">=</span> <span class="st">"btn btn-default"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -74,10 +75,6 @@
 <dd><p>Margins to add to PDF.</p></dd>
 
 
-<dt id="arg-loading">loading<a class="anchor" aria-label="anchor" href="#arg-loading"></a></dt>
-<dd><p>Add a loading indicator if taking screenshot take time, see <code><a href="loading.html">loading()</a></code> for usage.</p></dd>
-
-
 <dt id="arg-scale">scale<a class="anchor" aria-label="anchor" href="#arg-scale"></a></dt>
 <dd><p>Scale factor applied to image's dimension. Can be used to get a higher resolution image.</p></dd>
 
@@ -85,6 +82,14 @@
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
 <dd><p>Options (as a list) passed to <a href="https://github.com/bubkoo/html-to-image#options" class="external-link">html-to-image</a>
 method, for example you can use <code>backgroundColor</code> to set background color.</p></dd>
+
+
+<dt id="arg-loading">loading<a class="anchor" aria-label="anchor" href="#arg-loading"></a></dt>
+<dd><p>Add a loading indicator if taking screenshot take time, see <code><a href="loading.html">loading()</a></code> for usage.</p></dd>
+
+
+<dt id="arg-statusinputid">statusInputId<a class="anchor" aria-label="anchor" href="#arg-statusinputid"></a></dt>
+<dd><p>Retrieve status information in an <code>input</code> value server-side.</p></dd>
 
 
 <dt id="arg-button-class">button_class<a class="anchor" aria-label="anchor" href="#arg-button-class"></a></dt>
@@ -184,7 +189,7 @@ method, for example you can use <code>backgroundColor</code> to set background c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
