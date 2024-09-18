@@ -42,9 +42,12 @@ import * as utils from "../modules/utils";
     var ratio = width / height;
     var orientation = ratio > 1 ? "landscape" : "portrait";
     
-    var scale = parseInt(el.getAttribute("data-scale"));
+    var scale = parseFloat(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
     options = JSON.parse(options);
+    if (options.hasOwnProperty("filter")) {
+      options.filter = eval("(" + options.filter + ")");
+    }
     if (!isNaN(scale)) {
       options.height = options.height ? options.height * scale : node.offsetHeight * scale;
       options.width = options.width ? options.width * scale : node.offsetWidth * scale;
