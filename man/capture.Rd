@@ -35,7 +35,8 @@ method, for example you can use \code{backgroundColor} to set background color.}
 
 \item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
 
-\item{statusInputId}{Retrieve status information in an \code{input} value server-side.}
+\item{statusInputId}{Retrieve status information in an \code{input} value server-side with
+following structure: \verb{list(status = "started|finished|error", timestamp = <POSIX timestamp>)}.}
 
 \item{button_class}{Class to use for the HTML tag \verb{<button>}}
 }

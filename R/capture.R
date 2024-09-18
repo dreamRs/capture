@@ -12,7 +12,8 @@
 #' @param options Options (as a list) passed to [html-to-image](https://github.com/bubkoo/html-to-image#options)
 #'  method, for example you can use `backgroundColor` to set background color.
 #' @param loading Add a loading indicator if taking screenshot take time, see [loading()] for usage.
-#' @param statusInputId Retrieve status information in an `input` value server-side.
+#' @param statusInputId Retrieve status information in an `input` value server-side with
+#'  following structure: `list(status = "started|finished|error", timestamp = <POSIX timestamp>)`.
 #' @param button_class Class to use for the HTML tag `<button>`
 #'
 #' @note It's only possible to take screenshot of elements that are actually visible on screen. It doesn't work in Internet Explorer.

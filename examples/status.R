@@ -65,6 +65,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$loading, {
+    print(input$loading)
     if (identical(input$loading$status, "started")) {
       showNotification(ui = "Capturing screenshot, please wait...")
     }

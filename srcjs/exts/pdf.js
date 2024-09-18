@@ -80,6 +80,10 @@ import * as utils from "../modules/utils";
         }
       })
       .catch(function(error) {
+        Loading.remove();
+        if (statusId !== null) {
+          Shiny.setInputValue(statusId, {status: "error", timestamp: Date.now()});
+        }
         console.error("Capture: oops, something went wrong!", error);
       });
   }
