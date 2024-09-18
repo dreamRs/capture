@@ -1,3 +1,8 @@
+# capture 0.1.5
+
+* Allow floating numbers in `scale =` argument.
+
+
 # capture 0.1.4
 
 * Updated html-to-image to 1.11.11.

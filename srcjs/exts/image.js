@@ -23,7 +23,7 @@ import * as utils from "../modules/utils";
     var node = document.querySelector(toCapture);
     var fileName = el.getAttribute("data-filename");
     var inputId = el.getAttribute("data-inputId");
-    var scale = parseInt(el.getAttribute("data-scale"));
+    var scale = parseFloat(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
     options = JSON.parse(options);
     if (!isNaN(scale)) {
