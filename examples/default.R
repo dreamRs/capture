@@ -7,7 +7,7 @@ ui <- fluidPage(
     selector = "body",
     filename = "all-page",
     icon("camera"), "Take screenshot of all page",
-    format = "jpeg"
+    format = "png"
   ),
   tags$br(),
   fluidRow(
@@ -15,7 +15,6 @@ ui <- fluidPage(
       width = 4,
       wellPanel(
         tags$b("Parameters :"),
-
         selectInput(
           inputId = "loi",
           label = "Law:",

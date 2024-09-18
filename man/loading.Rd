@@ -27,7 +27,7 @@ loading(
 \item{...}{Other arguments.}
 }
 \value{
-a \code{list} that can be used in \code{\link[=capture_pdf]{capture_pdf()}}.
+a \code{list} that can be used in \code{\link[=capture]{capture()}} or \code{\link[=capture_pdf]{capture_pdf()}}.
 }
 \description{
 Loading indicator to be displayed when generating screenshot

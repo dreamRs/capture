@@ -2,26 +2,18 @@ library(shiny)
 library(capture)
 
 ui <- fluidPage(
-  tags$h2("Capture PDF (scales) example"),
-  capture_pdf(
+  tags$h2("Capture (loading) example"),
+  capture(
     selector = "body",
-    filename = "pdf-default-scale",
-    icon("camera"), "Default scale",
-    loading = loading()
+    filename = "all-page",
+    icon("camera"), "Auto loading indicator",
+    loading = loading(text = "Capturing screenshot...")
   ),
-  capture_pdf(
+  capture(
     selector = "body",
-    filename = "pdf-larger-scale",
-    icon("camera"), "Larger scale",
-    scale = 2.5,
-    loading = loading()
-  ),
-  capture_pdf(
-    selector = "body",
-    filename = "pdf-smaller-scale",
-    icon("camera"), "Smaller scale",
-    scale = 0.9,
-    loading = loading()
+    filename = "all-page",
+    icon("camera"), "Input value",
+    statusInputId = "loading"
   ),
   tags$br(),
   fluidRow(
@@ -50,6 +42,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  
   distrib_r <- reactive({
     switch(
       input$loi,
@@ -70,8 +63,17 @@ server <- function(input, output, session) {
   output$raw <- renderPrint({
     summary(distrib_r())
   })
+  
+  observeEvent(input$loading, {
+    if (identical(input$loading$status, "started")) {
+      showNotification(ui = "Capturing screenshot, please wait...")
+    }
+    if (identical(input$loading$status, "finished")) {
+      showNotification(ui = "Screenshot captured!", type = "message")
+    }
+  })
+  
 }
 
 if (interactive())
   shinyApp(ui, server)
-

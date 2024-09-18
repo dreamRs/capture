@@ -12,6 +12,8 @@ capture(
   scale = NULL,
   inputId = NULL,
   options = NULL,
+  loading = NULL,
+  statusInputId = NULL,
   button_class = "btn btn-default"
 )
 }
@@ -30,6 +32,10 @@ capture(
 
 \item{options}{Options (as a list) passed to \href{https://github.com/bubkoo/html-to-image#options}{html-to-image}
 method, for example you can use \code{backgroundColor} to set background color.}
+
+\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
+
+\item{statusInputId}{Retrieve status information in an \code{input} value server-side.}
 
 \item{button_class}{Class to use for the HTML tag \verb{<button>}}
 }
@@ -52,7 +58,7 @@ ui <- fluidPage(
     selector = "body",
     filename = "all-page",
     icon("camera"), "Take screenshot of all page",
-    format = "jpeg"
+    format = "png"
   ),
   tags$br(),
   fluidRow(
@@ -60,7 +66,6 @@ ui <- fluidPage(
       width = 4,
       wellPanel(
         tags$b("Parameters :"),
-
         selectInput(
           inputId = "loi",
           label = "Law:",

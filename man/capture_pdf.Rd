@@ -9,9 +9,10 @@ capture_pdf(
   filename,
   ...,
   margins = 15,
-  loading = NULL,
   scale = NULL,
   options = NULL,
+  loading = NULL,
+  statusInputId = NULL,
   button_class = "btn btn-default"
 )
 }
@@ -24,12 +25,14 @@ capture_pdf(
 
 \item{margins}{Margins to add to PDF.}
 
-\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
-
 \item{scale}{Scale factor applied to image's dimension. Can be used to get a higher resolution image.}
 
 \item{options}{Options (as a list) passed to \href{https://github.com/bubkoo/html-to-image#options}{html-to-image}
 method, for example you can use \code{backgroundColor} to set background color.}
+
+\item{loading}{Add a loading indicator if taking screenshot take time, see \code{\link[=loading]{loading()}} for usage.}
+
+\item{statusInputId}{Retrieve status information in an \code{input} value server-side.}
 
 \item{button_class}{Class to use for the HTML tag \verb{<button>}}
 }

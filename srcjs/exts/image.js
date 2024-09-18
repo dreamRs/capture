@@ -1,6 +1,7 @@
 import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
 import * as utils from "../modules/utils";
+import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 (function() {
   // IMAGE
@@ -25,6 +26,20 @@ import * as utils from "../modules/utils";
     var inputId = el.getAttribute("data-inputId");
     var scale = parseFloat(el.getAttribute("data-scale"));
     var options = el.getAttribute("data-options");
+    var loading = el.getAttribute("data-loading");
+    var statusId = el.getAttribute("data-status-id");
+    if (statusId !== null) {
+      Shiny.setInputValue(statusId, {status: "started", timestamp: Date.now()});
+    }
+    if (loading === "true") {
+      var configLoading = el.querySelector(
+        "script[data-for='capture-loading-config']"
+      );
+      configLoading = JSON.parse(configLoading.innerHTML);
+      //console.log(configLoading.type);
+      Loading.init(configLoading.options);
+      Loading[configLoading.type](configLoading.text);
+    }
     options = JSON.parse(options);
     if (options.hasOwnProperty("filter")) {
       options.filter = eval("(" + options.filter + ")");
@@ -59,6 +74,10 @@ import * as utils from "../modules/utils";
           };
         }
         el.classList.remove("disabled");
+        Loading.remove();
+        if (statusId !== null) {
+          Shiny.setInputValue(statusId, {status: "finished", timestamp: Date.now()});
+        }
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);

@@ -11,6 +11,8 @@
 #' @param inputId An `inputId` to retrieve image as base64 in an `input` slot server-side.
 #' @param options Options (as a list) passed to [html-to-image](https://github.com/bubkoo/html-to-image#options)
 #'  method, for example you can use `backgroundColor` to set background color.
+#' @param loading Add a loading indicator if taking screenshot take time, see [loading()] for usage.
+#' @param statusInputId Retrieve status information in an `input` value server-side.
 #' @param button_class Class to use for the HTML tag `<button>`
 #'
 #' @note It's only possible to take screenshot of elements that are actually visible on screen. It doesn't work in Internet Explorer.
@@ -30,6 +32,8 @@ capture <- function(selector,
                     scale = NULL, 
                     inputId = NULL,
                     options = NULL,
+                    loading = NULL, 
+                    statusInputId = NULL,
                     button_class = "btn btn-default") {
   format <- match.arg(format)
   ext <- tools::file_ext(filename)
@@ -43,7 +47,16 @@ capture <- function(selector,
       `data-options` = toJSON(x = options, auto_unbox = TRUE),
       `data-scale` = scale,
       `data-inputId` = inputId,
-      ...
+      `data-loading` = tolower(!is.null(loading)),
+      `data-status-id` = statusInputId,
+      ...,
+      if (length(loading) > 0) {
+        tags$script(
+          type = "application/json",
+          `data-for` = "capture-loading-config",
+          toJSON(loading, auto_unbox = TRUE)
+        )
+      }
     ),
     html_dependency_capture()
   )
@@ -58,7 +71,6 @@ capture <- function(selector,
 #'
 #' @inheritParams capture
 #' @param margins Margins to add to PDF.
-#' @param loading Add a loading indicator if taking screenshot take time, see [loading()] for usage.
 #'
 #' @return an HTML tag that can be used in UI or rmarkdown HTML document.
 #' @export
@@ -72,9 +84,10 @@ capture_pdf <- function(selector,
                         filename, 
                         ..., 
                         margins = 15, 
-                        loading = NULL, 
                         scale = NULL, 
                         options = NULL,
+                        loading = NULL, 
+                        statusInputId = NULL,
                         button_class = "btn btn-default") {
   ext <- tools::file_ext(filename)
   if (!identical(ext, "pdf"))
@@ -85,11 +98,12 @@ capture_pdf <- function(selector,
       `data-selector` = selector,
       `data-filename` = filename,
       `data-margins` = margins,
-      `data-loading` = tolower(!is.null(loading)),
       `data-options` = toJSON(x = options, auto_unbox = TRUE),
-      `data-scale` = if (!is.null(scale)) scale,
+      `data-scale` = scale,
+      `data-loading` = tolower(!is.null(loading)),
+      `data-status-id` = statusInputId,
       ...,
-      if (!is.null(loading)) {
+      if (length(loading) > 0) {
         tags$script(
           type = "application/json",
           `data-for` = "capture-loading-config",

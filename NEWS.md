@@ -2,6 +2,8 @@
 
 * Allow floating numbers in `scale =` argument [#13](https://github.com/dreamRs/capture/issues/13).
 * Allow to pass JavaScript function in `options$filter` argument [#12](https://github.com/dreamRs/capture/issues/12).
+* Added `loading` parameters to `capture()` like in `capture_pdf()`
+* Added `statusInputId` parameter to `capture()` and `capture_pdf()` to retrieve status information in an `input` value server-side.
 
 
 # capture 0.1.4

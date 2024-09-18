@@ -25,6 +25,10 @@ import * as utils from "../modules/utils";
     var fileName = el.getAttribute("data-filename");
     var margins = el.getAttribute("data-margins");
     var loading = el.getAttribute("data-loading");
+    var statusId = el.getAttribute("data-status-id");
+    if (statusId !== null) {
+      Shiny.setInputValue(statusId, {status: "started", timestamp: Date.now()});
+    }
     if (loading === "true") {
       var configLoading = el.querySelector(
         "script[data-for='capture-loading-config']"
@@ -34,7 +38,6 @@ import * as utils from "../modules/utils";
       Loading.init(configLoading.options);
       Loading[configLoading.type](configLoading.text);
     }
-    
     var node = document.querySelector(toCapture);
     var width = node.clientWidth;
     var height = node.scrollHeight;
@@ -72,6 +75,9 @@ import * as utils from "../modules/utils";
         doc.save(fileName);
         el.classList.remove("disabled");
         Loading.remove();
+        if (statusId !== null) {
+          Shiny.setInputValue(statusId, {status: "finished", timestamp: Date.now()});
+        }
       })
       .catch(function(error) {
         console.error("Capture: oops, something went wrong!", error);
