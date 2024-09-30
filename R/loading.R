@@ -10,8 +10,9 @@
 #'
 #' @return a `list` that can be used in [capture()] or [capture_pdf()].
 #' @export
-#'
-loading <- function(text = "Generating PDF, please wait...",
+#' 
+#' @example examples/loading.R
+loading <- function(text = "Capturing screenshot, please wait...",
                     type = c("standard", "hourglass", "circle", "arrows", "dots", "pulse"),
                     color = "#246abe",
                     background = "rgba(0,0,0,0.8)",
