@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   rmarkdown: rmarkdown.html
-last_built: 2024-09-30T07:32Z
+last_built: 2024-10-26T06:22Z
 urls:
   reference: https://dreamrs.github.io/capture/reference
   article: https://dreamrs.github.io/capture/articles
